@@ -13,22 +13,17 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Snyk
-                  name: Snyk_1
-                  identifier: Snyk_1
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
                   spec:
-                    mode: orchestration
-                    config: oss
-                    target:
-                      type: repository
-                      detection: auto
-                    advanced:
-                      log:
-                        level: info
-                      fail_on_severity: none
-                    privileged: true
-                    auth:
-                      access_token: aa998017-544c-433a-bd8c-3901ce58d453
+                    shell: Sh
+                    command: |-
+                      # Install and Authenticate to Snyk
+                         npm install -g snyk
+                         snyk auth  aa998017-544c-433a-bd8c-3901ce58d453
+                         # Snyk test
+                         snyk test
           platform:
             os: Linux
             arch: Amd64
