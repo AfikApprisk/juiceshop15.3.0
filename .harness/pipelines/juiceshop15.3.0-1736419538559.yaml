@@ -22,7 +22,7 @@ pipeline:
                       # Install and Authenticate to Snyk
                          npm install -g snyk
                          npm install
-                         snyk auth  aa998017-544c-433a-bd8c-3901ce58d453
+                         snyk auth  
                          # Snyk test
                          snyk test
           platform:
