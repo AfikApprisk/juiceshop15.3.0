@@ -32,6 +32,7 @@ pipeline:
                     advanced:
                       log:
                         level: info
+                      fail_on_severity: critical
                     privileged: true
                     auth:
                       access_token: aa998017-544c-433a-bd8c-3901ce58d453
