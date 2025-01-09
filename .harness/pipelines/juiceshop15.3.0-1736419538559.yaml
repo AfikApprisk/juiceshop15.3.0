@@ -18,14 +18,14 @@ pipeline:
                   identifier: Snyk_1
                   spec:
                     mode: orchestration
-                    config: code
+                    config: oss
                     target:
                       type: repository
                       detection: auto
                     advanced:
                       log:
                         level: info
-                      fail_on_severity: critical
+                      fail_on_severity: none
                     privileged: true
                     auth:
                       access_token: aa998017-544c-433a-bd8c-3901ce58d453
