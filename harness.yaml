@@ -2,7 +2,7 @@ pipeline:
   name: Snyk Test Pipeline
   identifier: snyk_test_pipeline
   projectIdentifier: my_project
-  orgIdentifier: my_org
+  orgIdentifier: default
   stages:
     - stage:
         name: Snyk Test Stage
