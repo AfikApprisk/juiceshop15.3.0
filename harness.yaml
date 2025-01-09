@@ -1,0 +1,60 @@
+pipeline:
+  name: Snyk Test Pipeline
+  identifier: snyk_test_pipeline
+  projectIdentifier: my_project
+  orgIdentifier: my_org
+  stages:
+    - stage:
+        name: Snyk Test Stage
+        identifier: snyk_test_stage
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: HostedVm
+            spec:
+              poolId: harness_cloud
+          execution:
+            steps:
+              - step:
+                  name: Install Snyk CLI
+                  identifier: install_snyk_cli
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      curl -o- https://raw.githubusercontent.com/snyk/snyk-install/master/install.sh | bash
+
+              - step:
+                  name: Authenticate Snyk
+                  identifier: authenticate_snyk
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      export SNYK_TOKEN=<+secrets.getValue("snyk_api_token")>
+                      snyk auth $SNYK_TOKEN
+
+              - step:
+                  name: Run Snyk Test
+                  identifier: run_snyk_test
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      snyk test --json > snyk-results.json
+
+              - step:
+                  name: Publish Snyk Results
+                  identifier: publish_snyk_results
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      if grep -q '"issues":' snyk-results.json; then
+                        echo "Snyk found vulnerabilities!"
+                        cat snyk-results.json
+                        exit 1
+                      else
+                        echo "No vulnerabilities found."
+                      fi
