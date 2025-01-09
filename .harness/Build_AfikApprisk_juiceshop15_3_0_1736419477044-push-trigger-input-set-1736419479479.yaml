@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_AfikApprisk_juiceshop15_3_0_1736419477044-push-trigger-input-set
+  identifier: Build_AfikApprisk_juiceshop15_3_0_1736419477044pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: my_project
+  pipeline:
+    identifier: Build_AfikApprisk_juiceshop15_3_0_1736419477044
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
