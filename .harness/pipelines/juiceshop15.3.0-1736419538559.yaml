@@ -19,6 +19,22 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo "Welcome to Harness CI"
+              - step:
+                  type: Snyk
+                  name: Snyk_1
+                  identifier: Snyk_1
+                  spec:
+                    mode: orchestration
+                    config: oss
+                    target:
+                      type: repository
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                    privileged: true
+                    auth:
+                      access_token: aa998017-544c-433a-bd8c-3901ce58d453
           platform:
             os: Linux
             arch: Amd64
