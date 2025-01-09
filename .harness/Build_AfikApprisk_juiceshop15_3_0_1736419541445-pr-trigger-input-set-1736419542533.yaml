@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_AfikApprisk_juiceshop15_3_0_1736419541445-pr-trigger-input-set
+  identifier: Build_AfikApprisk_juiceshop15_3_0_1736419541445prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: my_project
+  pipeline:
+    identifier: Build_AfikApprisk_juiceshop15_3_0_1736419541445
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
