@@ -25,7 +25,7 @@ pipeline:
                   identifier: Snyk_1
                   spec:
                     mode: orchestration
-                    config: oss
+                    config: code
                     target:
                       type: repository
                       detection: auto
